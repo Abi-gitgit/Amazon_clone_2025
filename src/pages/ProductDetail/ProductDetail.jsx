@@ -7,31 +7,34 @@ import { productUrl } from "../../Api/endPoints";
 import ProductCard from "../../components/Product/ProductCard";
 
 const ProductDetail = () => {
-  const { productId } = useParams();
   const [product, setProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const { productId } = useParams();
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get(`${productUrl}/products/${productId}`)
       .then((res) => {
         setProduct(res.data);
+        setIsLoading(false); 
       })
       .catch((err) => {
         console.error("Failed to fetch product:", err);
+        setIsLoading(false);
       });
-  }, [productId]);
+  }, [productId])
 
   return (
     <LayOut>
-      <div className={classes.detail_container}>
-        {product?.id ? (
-          <ProductCard product={product} />
-        ) : (
-          <p>Loading product...</p>
-        )}
-      </div>
+      {isLoading ? (
+        <p className={classes.loading}>Loading product...</p> 
+      ) : (
+        <ProductCard product={product} />
+      )}
     </LayOut>
   );
 };
 
 export default ProductDetail;
+
