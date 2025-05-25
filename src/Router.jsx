@@ -5,7 +5,8 @@ import Payment from "./pages/Payment/Payment";
 import Cart from "./pages/Cart/Cart";
 import SignIn from "./pages/Auth/SignUp";
 import Landing from "./pages/Landing/Landing";
-import Results from './pages/Results/Results'
+import Results from './pages/Results/Results';
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
 
 const Routing = () => {
   return (
@@ -16,7 +17,7 @@ const Routing = () => {
         <Route path="/payment" element={<Payment />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/category/:categoryName" element={<Results />} />
-
+        <Route path="/products/:productId" element={<ProductDetail/>} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
