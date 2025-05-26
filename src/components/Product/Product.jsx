@@ -30,9 +30,9 @@ const Product = () => {
         <Loader />
       ) : (
         <section className={classes.products_container}>
-          {products.map((singleProduct) => (
-            <ProductCard key={singleProduct.id} product={singleProduct} />
-          ))}
+          {products?.map((singleProduct) => {
+           return <ProductCard renderAdd={true} key={singleProduct.id} product={singleProduct} />;
+          })}
         </section>
       )}
     </>

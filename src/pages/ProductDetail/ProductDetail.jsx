@@ -28,9 +28,12 @@ const ProductDetail = () => {
 
   return (
     <LayOut>
-      {isLoading ? <Loader /> : <ProductCard product={product} flex={true} renderDesc={true} />}
+      {isLoading ? <Loader /> : <ProductCard product={product} flex={true} renderDesc={true} renderAdd={true} />}
     </LayOut>
   );
 };
 
 export default ProductDetail;
+
+
+

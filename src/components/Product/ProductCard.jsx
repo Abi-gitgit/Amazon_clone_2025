@@ -8,11 +8,10 @@ import { useContext } from "react";
 import { DataContext } from "../DataProvider/DataProvider";
 import {Type} from '../../Utility/action.type'
 
-const ProductCard = ({ product, flex, renderDesc }) => {
+const ProductCard = ({ product, flex, renderDesc, renderAdd }) => {
   const { image, title, id, rating, price, description } = product;
 
   const [state, dispatch]=useContext(DataContext)
-
 
   const addToCart =()=>{
     dispatch({
@@ -20,10 +19,6 @@ const ProductCard = ({ product, flex, renderDesc }) => {
       item: { image, title, id, rating, price, description },
     });
   }
-
-
-
-
 
   return (
     <div
@@ -37,7 +32,7 @@ const ProductCard = ({ product, flex, renderDesc }) => {
 
       <div>
         <h3>{title}</h3>
-        {renderDesc && <div style={{maxWidth: '750px'}}>{description}</div>}
+        {renderDesc && <div style={{ maxWidth: "750px" }}>{description}</div>}
 
         <div className={classes.rating}>
           <Rating value={rating?.rate || 0} precision={0.1} />
@@ -47,8 +42,11 @@ const ProductCard = ({ product, flex, renderDesc }) => {
         <div>
           <CurrencyFormat amount={price} />
         </div>
-
-        <button className={classes.button} onClick={addToCart}>Add to Cart</button>
+        {renderAdd && (
+          <button className={classes.button} onClick={addToCart}>
+            Add to Cart
+          </button>
+        )}
       </div>
     </div>
   );
