@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { productUrl } from "../../Api/endPoints";
 import ProductCard from "../../components/Product/ProductCard";
+import Loader from "../../components/Loader/Loader"; 
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
@@ -17,24 +18,19 @@ const ProductDetail = () => {
       .get(`${productUrl}/products/${productId}`)
       .then((res) => {
         setProduct(res.data);
-        setIsLoading(false); 
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error("Failed to fetch product:", err);
         setIsLoading(false);
       });
-  }, [productId])
+  }, [productId]);
 
   return (
     <LayOut>
-      {isLoading ? (
-        <p className={classes.loading}>Loading product...</p> 
-      ) : (
-        <ProductCard product={product} />
-      )}
+      {isLoading ? <Loader /> : <ProductCard product={product} flex={true} renderDesc={true} />}
     </LayOut>
   );
 };
 
 export default ProductDetail;
-
