@@ -23,7 +23,7 @@ const Product = () => {
         setIsLoading(false);
       });
   }, []);
-
+// console.log(products)
   return (
     <>
       {isLoading ? (

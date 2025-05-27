@@ -18,14 +18,14 @@ const Cart = () => {
   }, 0);
 
   const increment = (item) => {
-    dispatchEvent({
+    dispatch({
       type: Type.ADD_TO_BASKET,
       item,
     });
   };
 
   const decrement = (id) => {
-    dispatchEvent({
+    dispatch({
       type: Type.REMOVE_FROM_BASKET,
       id,
     });

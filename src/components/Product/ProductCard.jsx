@@ -10,7 +10,7 @@ import {Type} from '../../Utility/action.type'
 
 const ProductCard = ({ product, flex, renderDesc, renderAdd }) => {
   const { image, title, id, rating, price, description } = product;
-
+// console.log(price)
   const [state, dispatch]=useContext(DataContext)
 
   const addToCart =()=>{
